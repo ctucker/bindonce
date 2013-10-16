@@ -102,10 +102,8 @@
 
 				runBinders : function()
 				{
-					var i, max;
-					for (i = 0, max = this.binders.length; i < max; i ++)
-					{
-						var binder = this.binders[i];
+					while(this.binders.length > 0) {
+						var binder = this.binders.shift();
 						if (this.group && this.group != binder.group ) continue;
 						var value = binder.scope.$eval((binder.interpolate) ? $interpolate(binder.value) : binder.value);
 						switch(binder.attr)
